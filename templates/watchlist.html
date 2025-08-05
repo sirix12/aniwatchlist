@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="static/style.css" rel="stylesheet">
+        <title>Watch list</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <a href="/" class="navbar-brand">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navigation">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/watchlist" class="nav-link">Watch list</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/changepassword" class="nav-link">Change password</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    {% for n in watch_list %}
+                        <div class="col-sm item">
+                            <img src="{{ n["image_url"] }}" alt="pic">
+                            <h6 class="anime-name">{{ n["anime_name"]}}</h6>
+                            <form action="/watchlist" method="post">
+                                <div class="mb-3">
+                                    <input type="hidden" name="anime_name" type="text" value="{{ n["anime_name"] }}">
+                                </div>
+                                <button class="btn btn-outline-danger" type="submit">Remove</button>
+                            </form>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+    </body>
+
+</html>
