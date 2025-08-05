@@ -1,5 +1,4 @@
 # Anime Watchlist Web App
-### Video Demo: https://youtu.be/iIducjzrMdc
 ### Table of Contents
 
 - [Description](#description)
